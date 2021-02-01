@@ -11,4 +11,19 @@ class  Course(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     resource =  models.FileField(upload_to = "files/resource")
     length = models.IntegerField(null=False)
-    
+
+class CoursePropertty(models.Model):
+    description = models.CharField(max_length=20, null=False)
+    course = models.ForeignKey(Course, null=False, on_delete = models.CASCADE)
+
+    class Meta :
+        abstract = True
+
+class Tag(CoursePropertty):
+    pass
+
+class Prerequisite(CoursePropertty):
+    pass
+
+class Learning(CoursePropertty):
+    pass
