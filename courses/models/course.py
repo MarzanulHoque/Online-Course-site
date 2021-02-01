@@ -3,7 +3,7 @@ from django.db import models
 class  Course(models.Model):
 
     name = models.CharField(max_length=30, null=False)
-    name = models.CharField(max_length=200, null=True)
+    description = models.CharField(max_length=200, null=True)
     price = models.IntegerField(null=False)
     discount = models.IntegerField(null=False,default=0)
     active = models.BooleanField(default=False)
@@ -13,7 +13,7 @@ class  Course(models.Model):
     length = models.IntegerField(null=False)
 
 class CoursePropertty(models.Model):
-    description = models.CharField(max_length=20, null=False)
+    description = models.CharField(max_length=100, null=False)
     course = models.ForeignKey(Course, null=False, on_delete = models.CASCADE)
 
     class Meta :
